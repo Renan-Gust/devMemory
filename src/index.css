@@ -1,0 +1,9 @@
+:root {
+  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+}
+
+button{
+  border: none;
+  background: none;
+  cursor: pointer;
+}
