@@ -11,7 +11,7 @@
 </p>
 
 <h1 align="center">
-    <img src="" alt="devmemory" />
+    <img src="https://github.com/Renan-Gust/devMemory/blob/main/public/assets/devmemory.png" alt="devmemory" />
 </h1>
 
 <br>
