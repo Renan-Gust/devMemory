@@ -74,6 +74,20 @@ function App() {
         }
     }, [moveCount, gridItems])
 
+    function startTheGame() {
+        let tmpGrid = [...gridItems]
+
+        tmpGrid.map(item => item.shown = true)
+        setGridItems(tmpGrid)
+
+        setTimeout(() => {
+            tmpGrid.map(item => item.shown = false)
+            setGridItems(tmpGrid)
+
+            setPlaying(true)
+        }, 700)
+    }
+
     function resetAndCreateGrid() {
         setTimeElapsed(0)
         setMoveCount(0)
@@ -99,9 +113,21 @@ function App() {
                 tmpGrid[position].item = i
             }
         }
+        // setGridItems(tmpGrid)
 
+        tmpGrid.map(item => item.shown = true)
         setGridItems(tmpGrid)
-        setPlaying(true)
+
+        setTimeout(() => {
+            tmpGrid.map(item => item.shown = false)
+            setGridItems(tmpGrid)
+
+            setPlaying(true)
+        }, 700)
+
+        if(!playing && moveCount > 0){
+            setPlaying(true)
+        }
     }
 
     function handleItemClick(index: number){
@@ -129,7 +155,11 @@ function App() {
                     <InfoItem label="Movimentos" value={moveCount.toString()} />
                 </C.InfoArea>
 
-                <Button label="Reiniciar" icon={restartIcon} onClick={resetAndCreateGrid} />
+                {playing || timeElapsed !== 0 ?
+                    <Button label="Reiniciar" icon={restartIcon} onClick={resetAndCreateGrid} />
+                :
+                    <Button label="Começar" onClick={startTheGame} />
+                }
             </C.Info>
 
             <C.GridArea>
